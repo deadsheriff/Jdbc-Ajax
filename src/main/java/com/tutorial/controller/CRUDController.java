@@ -59,7 +59,7 @@ public class CRUDController extends HttpServlet {
                 User user=new User();
                 if(request.getParameter("userid")!=null){
                     int userid=Integer.parseInt(request.getParameter("userid"));
-                    user.setUserId(userid);
+                    user.setUserid(userid);
                 }
                 if(request.getParameter("firstName")!=null){
                     String firstname=(String)request.getParameter("firstName");

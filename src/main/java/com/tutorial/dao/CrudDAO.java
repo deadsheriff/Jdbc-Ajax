@@ -24,7 +24,7 @@ public class CrudDAO {
             PreparedStatement preparedStatement = connection
                     .prepareStatement("insert into tblUser(userid,firstname,lastname,email) values (?,?, ?, ? )");
             // Parameters start with 1
-            preparedStatement.setInt(1, user.getUserId());
+            preparedStatement.setInt(1, user.getUserid());
             preparedStatement.setString(2, user.getFirstName());
             preparedStatement.setString(3, user.getLastName());
             preparedStatement.setString(4, user.getEmail());
@@ -35,12 +35,12 @@ public class CrudDAO {
         }
     }
 
-    public void deleteUser(int userId) {
+    public void deleteUser(int userid) {
         try {
             PreparedStatement preparedStatement = connection
                     .prepareStatement("delete from tblUser where userid=?");
             // Parameters start with 1
-            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(1, userid);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -55,7 +55,7 @@ public class CrudDAO {
             // Parameters start with 1
             preparedStatement.setString(1, user.getLastName());
             preparedStatement.setString(2, user.getEmail());
-            preparedStatement.setInt(3, user.getUserId());
+            preparedStatement.setInt(3, user.getUserid());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -70,7 +70,7 @@ public class CrudDAO {
             ResultSet rs = statement.executeQuery("select * from tblUser");
             while (rs.next()) {
                 User user = new User();
-                user.setUserId(rs.getInt("userid"));
+                user.setUserid(rs.getInt("userid"));
                 user.setFirstName(rs.getString("firstname"));
                 user.setLastName(rs.getString("lastname"));
                 user.setEmail(rs.getString("email"));
@@ -83,16 +83,16 @@ public class CrudDAO {
         return users;
     }
 
-    public User getUserById(int userId) {
+    public User getUserById(int userid) {
         User user = new User();
         try {
             PreparedStatement preparedStatement = connection.
                     prepareStatement("select * from tblUser where userid=?");
-            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(1, userid);
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
-                user.setUserId(rs.getInt("userid"));
+                user.setUserid(rs.getInt("userid"));
                 user.setFirstName(rs.getString("firstname"));
                 user.setLastName(rs.getString("lastname"));
 

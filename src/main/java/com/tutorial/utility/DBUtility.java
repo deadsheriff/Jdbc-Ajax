@@ -1,6 +1,5 @@
 package com.tutorial.utility;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -18,7 +17,7 @@ public class DBUtility {
         else {
             try {
                 Properties prop = new Properties();
-                InputStream inputStream = DBUtility.class.getClassLoader().getResourceAsStream("/config.properties");
+                InputStream inputStream = DBUtility.class.getClassLoader().getResourceAsStream("config.properties");
                 prop.load(inputStream);
                 String driver = prop.getProperty("driver");
                 String url = prop.getProperty("url");
@@ -29,8 +28,6 @@ public class DBUtility {
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
